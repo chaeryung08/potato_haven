@@ -39,7 +39,7 @@ results.forEach(async (result) => {
 
   const patternMatch = aiPatterns.some(pattern => pattern.test(snippet));
   const prob = await checkAIWithSapling(snippet); // 확률 분석
-  const isAI = patternMatch || prob > 0.7; // 하나라도 해당되면 AI 의심
+  const isAI = patternMatch || prob > 0.5; // 하나라도 해당되면 AI 의심
 
   if (isAI) {
     aiDetected = true;

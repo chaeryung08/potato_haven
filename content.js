@@ -30,4 +30,3 @@ results.forEach((result) => {
     result.prepend(tag);
   }
 });
-ㅍ

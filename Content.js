@@ -28,7 +28,7 @@ const results = document.querySelectorAll('div.g');
 let aiDetected = false;
 
 const aiPatterns = [
-   /as an (ai|artificial intelligence) language model/,
+   /as an (ai|artificial intelligence) language model/i,
   /\b(chatgpt|gpt[- ]?4|gpt[- ]?3.5|claude|bard)\b/i,
   /\b(this (essay|article|response) (discusses|will discuss))\b/i,
   /generated (by|with)/i
@@ -39,8 +39,14 @@ results.forEach(async (result) => {
 
   const patternMatch = aiPatterns.some(pattern => pattern.test(snippet));
   const prob = await checkAIWithSapling(snippet); // 확률 분석
-  const isAI = patternMatch || prob > 0.3; // 하나라도 해당되면 AI 의심
+  const isAI = patternMatch || prob > 0.2; // 하나라도 해당되면 AI 의심
 
+  console.log("🔎 텍스트:", snippet);
+  console.log("🔎 확률:", prob);
+  console.log("🔎 패턴 일치:", patternMatch);
+  console.log("🔎 AI 판정:", isAI);
+
+  
   if (isAI) {
     aiDetected = true;
     result.style.opacity = "0.3";

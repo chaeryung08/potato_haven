@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "AI 걸름이",
+  "version": "1.0",
+  "description": "구글 검색 결과 중 AI 작성 의심 글을 감지해 숨깁니다.",
+  "permissions": ["scripting", "activeTab"],
+  "content_scripts": [
+    {
+      "matches": ["https://www.google.com/search*"],
+      "js": ["content.js"]
+    }
+  ]
+}
